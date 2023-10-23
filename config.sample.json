@@ -1,0 +1,53 @@
+{
+    "url": "http://localhost",
+    "host_redirect": true,
+    "scheme_redirect": true,
+    "site_name": "Obie",
+    "lang": "en",
+    "log_level": "debug",
+    "paths": {
+        "views_dir": "views",
+        "logs_dir": "logs",
+        "translations_dir": null
+    },
+    "errors": {
+        "mail": false,
+        "mail_address": "",
+        "dump": false,
+        "handle": true
+    },
+    "server": {
+        "csp_sources": {
+            "img": [],
+            "media": [],
+            "script": [],
+            "style": []
+        }
+    },
+    "db": {
+        "enable": false,
+        "dsn": "mysql:host=localhost;dbname=obie;charset=utf8mb4",
+        "username": "REPLACEME",
+        "password": "REPLACEME",
+        "options": {}
+    },
+    "mail": {
+        "enable": false,
+        "from_email": "no-reply@example.com",
+        "from_name": "example.com",
+        "host": "mail.example.com",
+        "port": 587,
+        "security": "tls",
+        "username": "info@example.com",
+        "password": "email_password"
+    },
+    "sessions": {
+        "enable": false,
+        "secret": "REPLACEME",
+        "save_handler": "files",
+        "save_path": "tmp",
+        "name": "obie_session",
+        "lifetime": 31556926,
+        "samesite": "Strict"
+    }
+}
