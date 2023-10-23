@@ -2,6 +2,8 @@
 declare(strict_types = 1);
 namespace ObieSampleApp;
 use Obie\Encoding\Uuid;
+use Obie\Http\AcceptLanguageHeader;
+use Obie\Http\Request;
 use Obie\Http\Response;
 use Obie\Http\Router;
 use Obie\Log;
@@ -56,6 +58,18 @@ class App extends \Obie\App {
 			'nonce' => Router::vars()->get('nonce'),
 			'language' => static::getI18n()->getLanguage(),
 		]);
+
+		return true;
+	}
+
+	public static function initLocale(): bool {
+		parent::initLocale();
+
+		$accept_language = AcceptLanguageHeader::decode(Request::current()?->getHeader('Accept-Language') ?? '');
+		$preferred_language = $accept_language->getPreferredLanguage(App::getI18n()->getLanguages(), App::getI18n()->getLanguage());
+		if ($preferred_language !== null) {
+			static::$i18n->setLanguage($preferred_language->locale);
+		}
 
 		return true;
 	}
